@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>BLUR</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+
+    </head>
+
+    <body>
+        <nav class="navbar navbar-dark bg-dark">
+            <a href="shop" class="navbar-brand mx-auto">BLUR SHOP</a>
+        </nav>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse container" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="products">PRODUCTS</a>
+                    <a class="nav-item nav-link" href="buy">BUY</a>
+                    <a class="nav-item nav-link" href="#">HELP</a>
+                    <a class="nav-item nav-link" href="#">ABOUT US</a>
+                    <a class="nav-item nav-link active" href="updateProfile">PROFILE</a>
+                </div>
+            </div>
+        </nav>
+
+        
+        <div class="container">
+            <dir class="row">
+                <div class="col-md-6 mt-4 text-center mx-auto">
+                    <dir class="card">
+                        <dir class="card-body">
+                            <form method="POST" action="/updateProfile/<%= data.Usuario_username %>" class="card-body">
+                                <h4 class="card-title">HELLO <%= data.nombresU%>, THIS IS YOUR PROFILE</h4>
+                                <div class="form-group"">
+                                    <input type="text" id="first" name="nombresU" class="form-control" value="<%= data.nombresU%>" placeholder="NAME">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="apellidosU" class="form-control" value="<%= data.apellidosU%>" placeholder="LAST NAME">
+                                </div>
+                                <div class="form-group">
+                                    <input type="tel" name="celular" class="form-control" value="<%= data.celular%>" placeholder="PHONE NUMBER">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" name="correo" class="form-control" value="<%= data.correo%>" placeholder="EMAIL">
+                                </div>
+                                <button type="submit" class="btn btn-primary">
+                                    UPDATE PROFILE
+                                </button>
+                            </form>
+                        </dir>
+                    </dir>
+                </div>
+            </dir>
+        </div> 
+
+    <script>
+        document.getElementById('first').focus();
+    </script>
+    </body>
+    <footer class="page-footer">
+        <div class="page-footer-fontent fixed-width clearfix">
+            <small class="copyright">All Content Copyright - BLUR. All Rights Reserved</small>
+            <small class="credits">Site Designed by <a href="#">BLUR TEAM</a></small>
+        </div>
+    </footer>
+</html>

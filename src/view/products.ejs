@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>BLUR</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+
+    </head>
+
+    <body>
+        <nav class="navbar navbar-dark bg-dark">
+            <a href="shop" class="navbar-brand mx-auto">BLUR SHOP</a>
+        </nav>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse container" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="products">PRODUCTS</a>
+                    <a class="nav-item nav-link" href="buy">BUY</a>
+                    <a class="nav-item nav-link" href="#">HELP</a>
+                    <a class="nav-item nav-link" href="#">ABOUT US</a>
+                    <a class="nav-item nav-link" href="updateProfile">PROFILE</a>
+                </div>
+            </div>
+        </nav>
+
+        
+        <div class="container">
+            <dir class="row">
+                <div class="col-md-6 mt-4 text-center mx-auto">
+                    <table class="table table-striped table-hover">
+                        <tr>
+                            <th>ID</th>
+                            <th>NAME</th>
+                            <th>PRICE</th>
+                            <th>STOCK</th>
+                            <th>CATEGORY</th>
+                            <th>SELLER</th>
+                            <th>ACTIONS</th>
+                        </tr>
+                        <% for(var i = 0; i < shop.length; i++) { %>
+                            <tr>
+                                <td><%= shop[i].idProductos%></td>
+                                <td><%= shop[i].nombreP%></td>
+                                <td><%= shop[i].precioP%></td>
+                                <td><%= shop[i].stock%></td>
+                                <td><%= shop[i].categoria%></td>
+                                <td><%= shop[i].Vendedor_Usuario_username%></td>
+                                <td>
+                                    <a href="/delete/<%= shop[i].idProductos %>" class="btn btn-danger"> DELETE</a>
+                                    <a href="/update/<%= shop[i].idProductos %>" class="btn btn-info"> UPDATE</a>
+                                </td>
+                            </tr>
+                        <% } %>
+                    </table>
+                    <form method="POST" action="/products" class="card-body">
+                        <h4 class="card-title">ADD A NEW ITEM</h4>
+                        <div class="form-group"">
+                            <input type="text" id="first" name="nombreP" class="form-control" placeholder="NAME">
+                        </div>
+                        <div class="form-group">
+                            <input type="number" name="precioP" class="form-control" placeholder="PRICE">
+                        </div>
+                        <div class="form-group">
+                            <input type="number" name="stock" class="form-control" placeholder="STOCK">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="categoria" class="form-control" placeholder="CATEGORY">
+                        </div>
+                        <input type="submit" class="btn btn-primary">
+                    </form>
+                </div>
+            </dir>
+        </div> 
+
+    <script>
+        document.getElementById('first').focus();
+    </script>
+    </body>
+    <footer class="page-footer">
+        <div class="page-footer-fontent fixed-width clearfix">
+            <small class="copyright">All Content Copyright - BLUR. All Rights Reserved</small>
+            <small class="credits">Site Designed by <a href="#">BLUR TEAM</a></small>
+        </div>
+    </footer>
+</html>
