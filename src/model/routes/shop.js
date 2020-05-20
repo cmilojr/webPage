@@ -22,4 +22,5 @@ module.exports = (app) => {
 
     app.post('/updateProfile/:id', controlller.updateProfile);
 
+    app.post('/purchased/:id', controlller.purchased)
 }

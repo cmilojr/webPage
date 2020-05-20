@@ -1,39 +1,40 @@
 const general = require('./General')
+const query = require('./queries')
+const Observer = require(`./observer`)
 
 function Productos(connection){
     this.connection = connection
+    this.q = new query(connection)
+    // this.o = new Observer()
+    // this.o.register(this.q)
+}
+
+Productos.prototype.notify = function(mensaje){
+        console.log(`PRODUCTOS => ${mensaje}`)
 }
 
 Productos.prototype.list = function(req, res){
-    this.connection.query('SELECT * from productos', (err, result) => 
-        general.render(res, err, result, '../../src/view/products.ejs', { shop: result })
-    )
+    this.q.list(res, "productos", "products.ejs")
+}
+
+Productos.prototype.listshop = function(req, res){
+    this.q.list(res, "productos", "buy.ejs")
 }
 
 Productos.prototype.deleteProduct = function(req, res){
     const {id} = req.params;
-    this.connection.query(`DELETE FROM productos WHERE idProductos = ${id}`, (err, result) => 
-        this.redirect(res, err, result, '/products')
-    )
-}
-
-Productos.prototype.addProduct = function(req, res){
-    const {nombreP, precioP, stock, categoria} = req.body
-    this.connection.query('INSERT INTO productos SET?', {
-        nombreP,
-        precioP,
-        stock,
-        categoria,
-        Vendedor_Usuario_username: 'hi'},
-        (err, result) => general.redirect(res, err, result, '/products')
-    )
+    this.q.deleteData(res, id)
+    //this.o.notify("PRODUCT DELETED")
 }
 
 Productos.prototype.editProducts = function(req, res){
     const {id} = req.params;
-    this.connection.query(`SELECT * FROM productos WHERE idProductos = ${id}`, (err, result) => {
-        general.render(res, err, result, '../../src/view/editProducts.ejs', {data: result[0]})
-    })
+    this.q.information(res, "productos", "editProducts.ejs", id)
+}
+
+Productos.prototype.info = function(req, res){
+    const {id} = req.params;
+    this.q.information(res, "productos", "info.ejs", id)
 }
 
 Productos.prototype.updateProduct = function(req, res){
@@ -49,17 +50,16 @@ Productos.prototype.updateProduct = function(req, res){
     )
 }
 
-Productos.prototype.listshop = function(req, res){
-    this.connection.query('SELECT * from productos', (err, result) => {
-        general.render(res, err, result, '../../src/view/buy.ejs', { shop: result })
-    })
-}
-
-Productos.prototype.info = function(req, res){
-    const {id} = req.params;
-    this.connection.query(`SELECT * FROM productos WHERE idProductos = ${id}`, (err, result) => {
-        general.render(res, err, result, '../../src/view/info.ejs', {data: result[0]})
-    })
+Productos.prototype.addProduct = function(req, res){
+    const {nombreP, precioP, stock, categoria} = req.body
+    this.connection.query('INSERT INTO productos SET?', {
+        nombreP,
+        precioP,
+        stock,
+        categoria,
+        Vendedor_Usuario_username: 'hi'},
+        (err, result) => general.redirect(res, err, result, '/products')
+    )
 }
 
 module.exports = Productos

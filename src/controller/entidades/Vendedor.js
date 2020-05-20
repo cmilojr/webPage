@@ -4,6 +4,10 @@ function Vendedor(connection){
     this.connection = connection
 }
 
+Vendedor.prototype.notify = function(mensaje){
+    console.log(mensaje)
+}
+
 Vendedor.prototype.loadProfile = function(req, res){
     const {id} = req.params;
     this.connection.query(`SELECT * FROM vendedor WHERE Usuario_username = "hi"`, (err, result) =>

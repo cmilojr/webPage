@@ -4,7 +4,7 @@ General.prototype.render = function(res, err, result, ruta, data){
     if(err) {
         throw err
     }else {
-        //console.log(result[0]);
+        res.status(200)
         res.render(ruta, data);
     }
 }
