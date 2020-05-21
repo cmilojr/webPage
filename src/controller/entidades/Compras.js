@@ -7,7 +7,7 @@ function Compras(connection){
 }
 
 Compras.prototype.notify = function(mensaje){
-    console.log(mensaje)
+    //console.log(mensaje)
 }
 
 Compras.prototype.purchased = function(req, res){
@@ -24,7 +24,7 @@ Compras.prototype.purchased = function(req, res){
             if (err) {
                 console.log(err);
             } else {
-                console.log(res);
+                //console.log(res);
             }
         })
         this.connection.query('INSERT INTO detallecompra SET?', {
@@ -36,12 +36,12 @@ Compras.prototype.purchased = function(req, res){
             if (err) {
                 console.log(err);
             } else {
-                console.log(res);
+                //console.log(res);
             }
         })
-
-        
-        this.chance.cambiarEstado(id,cantidadP,stock)
+        if(cantidadP > 0){
+            this.chance.cambiarEstado(id,cantidadP,stock)
+        }
         general.redirect(res, err, result, '/products')
     })
 }

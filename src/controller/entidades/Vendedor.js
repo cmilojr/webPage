@@ -5,7 +5,7 @@ function Vendedor(connection){
 }
 
 Vendedor.prototype.notify = function(mensaje){
-    console.log(mensaje)
+    //console.log(mensaje)
 }
 
 Vendedor.prototype.loadProfile = function(req, res){

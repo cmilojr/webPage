@@ -15,10 +15,7 @@ o.register(c)*/
 //Controlador Productos
 controller.list = (req, res)            => p.list(req, res)
 
-controller.deleteProduct = (req, res)   => {
-    p.deleteProduct(req, res)
-    o.notify("PASO ALGO MK")
-}
+controller.deleteProduct = (req, res)   => p.deleteProduct(req, res)
 
 controller.addProduct = (req, res)      => p.addProduct(req, res)
 

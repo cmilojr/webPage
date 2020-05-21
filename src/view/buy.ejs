@@ -6,9 +6,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/css/style.css">
-
     </head>
-
     <body>
         <nav class="navbar navbar-dark bg-dark">
             <a href="shop" class="navbar-brand mx-auto">BLUR SHOP</a>
@@ -23,7 +21,7 @@
                     <a class="nav-item nav-link active" href="buy">BUY</a>
                     <a class="nav-item nav-link" href="#">HELP</a>
                     <a class="nav-item nav-link" href="#">ABOUT US</a>
-                    <a class="nav-item nav-link" href="profile">PROFILE</a>
+                    <a class="nav-item nav-link" href="updateProfile">PROFILE</a>
                 </div>
             </div>
         </nav>
@@ -48,7 +46,6 @@
                                         <% if (shop[i].estado) { %>
                                         <a href="/info/<%= shop[i].idProductos %>" disable="false" class="btn btn-info">BUY</a>
                                         <% }else {%> 
-                                       
                                         <% }%>
                                 </td>
                             </div>
@@ -58,7 +55,6 @@
             </div>
         </div>
     </body>
-
     <footer class="page-footer">
         <div class="page-footer-fontent fixed-width clearfix">
             <small class="copyright">All Content Copyright - BLUR. All Rights Reserved</small>
