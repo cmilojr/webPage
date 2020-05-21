@@ -1,7 +1,9 @@
 const general = require('./General')
+const observer = require('./Observador')
 
 function Compras(connection){
     this.connection = connection
+    this.chance = new observer(connection)
 }
 
 Compras.prototype.notify = function(mensaje){
@@ -11,23 +13,36 @@ Compras.prototype.notify = function(mensaje){
 Compras.prototype.purchased = function(req, res){
     var todayDate = new Date().toISOString().slice(0,10);
     const {id} = req.params;
-    const {nombreP, precioP, stock, categoria} = req.body
-    this.connection.query(`SELECT * FROM productos WHERE idProductos = ${id}`, 
-    (err, res) => {
-        if(err){
-            console.log(err);
-        } else {
-            this.connection.query('INSERT INTO compras SET?', {
-                fechaC: todayDate,
-                Cliente_Usuario_username: 'hello'
-            }, (err, res) => {
-                if (err) {
-                    console.log(err);
-                } else {
-                    console.log(res);
-                }
-            })
-        }
+    const {precioP,cantidadP,stock} = req.body;
+    var valor = cantidadP * precioP
+    this.connection.query(`SELECT precioP FROM productos WHERE idProductos = ${id}`, 
+    (err, result) => {
+        this.connection.query('INSERT INTO compras SET?', {
+            fechaC: todayDate,
+            Cliente_Usuario_username: 'hello'}, 
+            (err, res) => {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log(res);
+            }
+        })
+        this.connection.query('INSERT INTO detallecompra SET?', {
+            cantidadP,
+            valor,
+            Compras_idCompras: 1,
+            Productos_idProductos: id}, 
+            (err, res) => {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log(res);
+            }
+        })
+
+        
+        this.chance.cambiarEstado(id,cantidadP,stock)
+        general.redirect(res, err, result, '/products')
     })
 }
 

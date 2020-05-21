@@ -1,18 +1,16 @@
 const dbConnection = require('../../src/model/dbConnection')
-const Observer = require(`./entidades/observer`)
 const Productos = require('./entidades/Productos')
 const Vendedor = require('./entidades/Vendedor')
 const Compras = require('./entidades/Compras')
 const controller = {}
 const connection = dbConnection();
 
-const o = new Observer()
 const p = new Productos(connection)
 const v = new Vendedor(connection)
 const c = new Compras(connection)
-o.register(p)
+/*o.register(p)
 o.register(v)
-o.register(c)
+o.register(c)*/
 
 //Controlador Productos
 controller.list = (req, res)            => p.list(req, res)

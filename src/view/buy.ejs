@@ -39,8 +39,17 @@
                                     </tr>
                                 </a>
                                 <p>$ <%= shop[i].precioP%></p>
+                                <% if (shop[i].estado) { %>
+                                    <p>Disponible</p>
+                                <% }else {%> 
+                                    <p>Agotado</p>  
+                                <% }%>  
                                 <td>
-                                    <a href="/info/<%= shop[i].idProductos %>" class="btn btn-info">BUY</a>
+                                        <% if (shop[i].estado) { %>
+                                        <a href="/info/<%= shop[i].idProductos %>" disable="false" class="btn btn-info">BUY</a>
+                                        <% }else {%> 
+                                       
+                                        <% }%>
                                 </td>
                             </div>
                         </div>

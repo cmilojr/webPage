@@ -33,7 +33,7 @@
             <dir class="row">
                 <div class="col-md-6 mt-4 text-center mx-auto">
                     <dir class="">
-                        <dir class="card-body">
+                        <dir class="">
                             <form method="POST" action="/purchased/<%= data.idProductos%>" class="card-body">
                                 <h1 class="card-title"><%= data.nombreP%></h1>
                                 <div class="form-group">
@@ -44,6 +44,13 @@
                                 </div>
                                 <div class="form-group">
                                     <P><B>CATEGORY: </B> <%= data.categoria%></P>
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" name="cantidadP" class="form-control" placeholder="CANTIDAD">
+                                </div>
+                                <div class="Fantasma">
+                                        <input type="hidden" name="precioP" class="form-control" placeholder="" value=" <%= data.precioP%>">
+                                        <input type="hidden" name="stock" class="form-control" placeholder="" value=" <%= data.stock%>">
                                 </div>
                                 <button type="submit" class="btn btn-primary">
                                     BUY

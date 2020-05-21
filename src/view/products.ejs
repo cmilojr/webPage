@@ -34,6 +34,7 @@
                     <table class="table table-striped table-hover">
                         <tr>
                             <th>ID</th>
+                            <th>ESTADO</th>
                             <th>NAME</th>
                             <th>PRICE</th>
                             <th>STOCK</th>
@@ -44,6 +45,11 @@
                         <% for(var i = 0; i < shop.length; i++) { %>
                             <tr>
                                 <td><%= shop[i].idProductos%></td>
+                                <% if (shop[i].estado) { %>
+                                    <td>Disponible</td>
+                                <% }else {%> 
+                                    <td>Agotado</td>  
+                                <% }%>     
                                 <td><%= shop[i].nombreP%></td>
                                 <td><%= shop[i].precioP%></td>
                                 <td><%= shop[i].stock%></td>

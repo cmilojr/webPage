@@ -4,7 +4,7 @@ module.exports = () => {
     const db = mysql.createConnection({
         host: 'localhost',
         user: 'root',
-        password: 'macuser123',
+        password: '123456',
         database: 'myshop'
     })
     db.connect((err) => {
