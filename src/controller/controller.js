@@ -1,13 +1,12 @@
 const dbConnection = require('../../src/model/dbConnection')
-const Productos = require('./entidades/Productos')
-const Vendedor = require('./entidades/Vendedor')
-const Compras = require('./entidades/Compras')
+const AbstractFactory = require('./entidades/AbstractFactory')
 const controller = {}
 const connection = dbConnection();
 
-const p = new Productos(connection)
-const v = new Vendedor(connection)
-const c = new Compras(connection)
+const absFactory = new AbstractFactory(connection)
+const p = absFactory.create(0)
+const v = absFactory.create(1)
+const c = absFactory.create(2)
 /*o.register(p)
 o.register(v)
 o.register(c)*/
